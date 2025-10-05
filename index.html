@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LUNGUAGE: A Benchmark for Structured and Longitudinal Chest X-ray Interpretation</title>
-  <meta name="description" content="LUNGUAGE: a structured and longitudinal benchmark of radiologist-annotated chest X-ray reports, with a novel structuring framework and LunguageScore evaluation metric." />
+  <meta name="description" content="LUNGUAGE: a unified benchmark, framework, and evaluation metric for structured and longitudinal chest X-ray report understanding." />
   <meta name="theme-color" content="#0ea5e9" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white dark:bg-slate-950 text-slate-800 dark:text-slate-100">
+
   <!-- Header -->
   <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-200/60 dark:border-slate-800">
     <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -16,124 +17,113 @@
       <nav class="hidden md:flex gap-6 text-sm">
         <a href="#about" class="hover:text-sky-600">Overview</a>
         <a href="#abstract" class="hover:text-sky-600">Abstract</a>
-        <a href="#contribution" class="hover:text-sky-600">Contributions</a>
-        <a href="#figures" class="hover:text-sky-600">Figures</a>
         <a href="#dataset" class="hover:text-sky-600">Dataset</a>
+        <a href="#schema" class="hover:text-sky-600">Schema</a>
+        <a href="#annotation" class="hover:text-sky-600">Annotation</a>
+        <a href="#framework" class="hover:text-sky-600">Framework</a>
         <a href="#metric" class="hover:text-sky-600">Metric</a>
         <a href="#resources" class="hover:text-sky-600">Resources</a>
       </nav>
-      <a href="https://github.com/lunguage/lunguage-score" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-sky-600 text-white text-sm shadow hover:bg-sky-500">GitHub</a>
+      <a href="https://github.com/SuperSupermoon/Lunguage" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-sky-600 text-white text-sm shadow hover:bg-sky-500">GitHub</a>
     </div>
   </header>
 
-  <!-- Hero FIRST -->
-  <section id="about" class="max-w-6xl mx-auto px-4 pt-12 pb-8">
-    <div class="space-y-6">
-      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight text-center">
+  <!-- Hero / Overview Combined -->
+  <section id="about" class="max-w-6xl mx-auto px-4 pt-12 pb-12">
+    <div class="space-y-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
         LUNGUAGE: A Benchmark for Structured and Longitudinal Chest X-ray Interpretation
       </h1>
-      <p class="text-lg text-slate-600 dark:text-slate-300 text-center max-w-3xl mx-auto">
-        A unified research effort comprising a <b>benchmark dataset</b>, a <b>structuring framework</b>, and the <b>LunguageScore</b> metric. It disentangles nuanced clinical meanings at a detailed level and <b>links them sequentially across time at the patient level</b> to enable faithful evaluation of semantic understanding, structural alignment, and temporal consistency.
+      <p class="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+          We present the first unified pipeline for evaluating radiology report generation in both single and sequential settings.
+          It integrates three core components — a <b>fine-grained benchmark dataset (LUNGUAGE)</b>, a
+          <b>structuring framework</b> that links findings across time, and a <b>clinically grounded evaluation metric</b> —
+          enabling faithful, patient-level assessment of AI-generated reports. This unified approach captures nuanced diagnostic
+          reasoning, structural organization, and temporal progression, establishing a new standard for clinical AI evaluation.
       </p>
 
-      <!-- Three pillars: 1-column layout -->
-      <div class="grid grid-cols-1 gap-3 text-sm max-w-4xl mx-auto">
+      <figure class="p-6 mb-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <figcaption class="font-semibold mb-4 text-center">Figure 1. Overview of the LUNGUAGE framework</figcaption>
+        <img src="figures/overview_pipeline.png" alt="Overview pipeline: dataset → structuring framework → longitudinal grouping → LunguageScore evaluation" class="rounded-xl shadow-md w-full" />
+        <p class="mt-3 text-sm text-slate-500 text-center">  <b>Evaluation pipeline for radiology report generation.</b>
+          We introduce the first evaluation framework for radiology report generation, enabling both detailed single-report assessment and comprehensive patient-level trajectory evaluation.
+          On the left, we release <b>LUNGUAGE</b>, a radiologist-annotated benchmark of structured single and sequential chest X-ray reports.
+          On the right, we develop a two-stage <b>structuring framework</b> that converts free-text into schema-aligned structures at both single and sequential levels.
+          At the bottom, we present <b>LunguageScore</b>, a clinically validated metric that jointly measures semantic accuracy, structural fidelity, and temporal alignment, providing clinically faithful evaluation.
+        </p>
+      </figure>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm max-w-4xl mx-auto">
         <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
-          <div class="font-semibold mb-1 text-sky-700 dark:text-sky-400">① Benchmark Dataset</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">1,473 structured reports / 230 patients; 17k+ entities & 23k+ relation–attribute pairs; expert‑reviewed.</p>
+          <div class="font-semibold mb-1 text-sky-700 dark:text-sky-400 text-left">① Benchmark Dataset</div>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug">1,473 single reports (230 patients) annotated with 17,949 entities and 23,307 relation–attribute pairs, plus 80 sequential reports capturing 41,122 longitudinal observations.</p>
         </div>
         <div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
-          <div class="font-semibold mb-1 text-emerald-700 dark:text-emerald-400">② Structuring Framework</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">Two‑stage pipeline producing schema‑aligned triplets from free text, then grouping findings longitudinally into ENTITYGROUP & TEMPORALGROUP.</p>
+          <div class="font-semibold mb-1 text-emerald-700 dark:text-emerald-400 text-left">② Structuring Framework</div>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug">Transforms free‑text reports into structured entity–relation–attribute triplets, aligning with the LUNGUAGE schema and linking findings across time for patient‑level interpretation.</p>
         </div>
         <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
-          <div class="font-semibold mb-1 text-amber-700 dark:text-amber-400">③ LunguageScore Metric</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">Clinically grounded metric combining semantic, structural, and temporal fidelity; aligned with expert judgments.</p>
-        </div>
-      </div>
-
-      <!-- Stats: full-width card below -->
-      <div class="relative max-w-5xl mx-auto">
-        <div class="rounded-2xl bg-white/60 dark:bg-slate-800/60 p-6 shadow-xl ring-1 ring-slate-200/70 dark:ring-slate-800">
-          <div class="grid grid-cols-2 md:grid-cols-6 gap-4 text-center">
-            <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">1,473</div><div class="text-xs opacity-70">Reports</div></div>
-            <div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">230</div><div class="text-xs opacity-70">Patients</div></div>
-            <div class="p-4 rounded-xl bg-indigo-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">17k+</div><div class="text-xs opacity-70">Entities</div></div>
-            <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">23k+</div><div class="text-xs opacity-70">Relation–attr pairs</div></div>
-            <div class="p-4 rounded-xl bg-rose-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">80</div><div class="text-xs opacity-70">Sequential reports</div></div>
-            <div class="p-4 rounded-xl bg-teal-50 dark:bg-slate-900"><div class="text-3xl font-extrabold">41k+</div><div class="text-xs opacity-70">Pairwise comps.</div></div>
-          </div>
-          <p class="mt-4 text-xs text-slate-500 dark:text-slate-400 text-center">Numbers reflect the LUNGUAGE benchmark used throughout the paper.</p>
+          <div class="font-semibold mb-1 text-amber-700 dark:text-amber-400 text-left">③ LunguageScore Metric</div>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug">Evaluates semantic accuracy, structural fidelity, and temporal coherence between generated and reference reports — a clinically interpretable standard for AI evaluation.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Title (paper exact) -->
-  
-
-  <!-- Abstract (paper exact) -->
+  <!-- Abstract -->
   <section id="abstract" class="max-w-3xl mx-auto px-6 py-8">
     <h2 class="text-2xl font-bold mb-3 text-center">Abstract</h2>
-    <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-line">Radiology reports convey detailed clinical observations and capture diagnostic reasoning that evolves over time. However, existing evaluation methods are limited to single-report settings and rely on coarse metrics that fail to capture fine-grained clinical semantics and temporal dependencies. We introduce LUNGUAGE, a benchmark dataset for structured radiology report generation that supports both single-report evaluation and longitudinal patient-level assessment across multiple studies. It contains 1,473 annotated chest X-ray reports, each reviewed by experts, and 80 of them contain longitudinal annotations to capture disease progression and inter-study intervals, also reviewed by experts. Using this benchmark, we develop a two-stage structuring framework that transforms generated reports into fine-grained, schema-aligned structured reports, enabling longitudinal interpretation. We also propose LUNGUAGESCORE, an interpretable metric that compares structured outputs at the entity, relation, and attribute level while modeling temporal consistency across patient timelines. These contributions establish the first benchmark dataset, structuring framework, and evaluation metric for sequential radiology reporting, with empirical results demonstrating that LUNGUAGESCORE effectively supports structured report evaluation.</p>
-  </section>
-
-  <!-- Key Contributions (novel structuring & patient-level longitudinal emphasis) -->
-  <section id="contribution" class="max-w-6xl mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold mb-4">Key Contributions</h2>
-    <ul class="list-disc pl-5 space-y-2 text-sm">
-      <li><b>Novel structuring paradigm</b> capturing clinician‑level nuance with fine‑grained entity, attribute, and reasoning layers.</li>
-      <li><b>Patient‑level longitudinal linking</b> via ENTITYGROUP and TEMPORALGROUP that models diagnostic evolution over time.</li>
-      <li><b>Radiologist‑verified schema</b> designed from clinical practice first principles (17k entities; 23k relation–attribute pairs).</li>
-      <li><b>LunguageScore</b>: a unified metric integrating semantic, structural, and temporal fidelity for patient‑level evaluation.</li>
-      <li><b>Comprehensive benchmark</b> across single and longitudinal settings with recent vision–language models.</li>
-    </ul>
-  </section>
-
-  <!-- Figures -->
-  <section id="figures" class="max-w-6xl mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold mb-4">Core Figures</h2>
-
-    <figure class="p-6 mb-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
-      <figcaption class="font-semibold mb-4">Figure 1. Overview of the LUNGUAGE framework</figcaption>
-      <img src="figures/overview_pipeline.png" alt="Overview pipeline: dataset → LLM structuring → longitudinal grouping (ENTITYGROUP, TEMPORALGROUP) → evaluation with LunguageScore" class="rounded-xl shadow-md w-full" />
-      <p class="mt-3 text-sm text-slate-500">High‑level pipeline from raw radiology reports to structured single and sequential representations, culminating in patient‑level evaluation.</p>
-    </figure>
-
-    <figure class="p-6 mb-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
-      <figcaption class="font-semibold mb-4">Figure 2. Annotation protocol</figcaption>
-      <img src="figures/workflow.png" alt="Annotation protocol: Stage1 Initial Structuring → Stage2 Schema & Vocabulary → Stage3 Report Annotation with expert adjudication and QA" class="rounded-xl shadow-md w-full" />
-      <p class="mt-3 text-sm text-slate-500">Stage1: Initial Structuring → Stage2: Schema & Vocabulary → Stage3: Report Annotation — yielding the final LUNGUAGE benchmark.</p>
-    </figure>
-
-    <figure class="p-6 mb-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
-      <figcaption class="font-semibold mb-4">Figure 3. Single and Sequential schema</figcaption>
-      <img src="figures/schema_single_sequential.png" alt="Single schema vs sequential schema with ENTITYGROUP and TEMPORALGROUP" class="rounded-xl shadow-md w-full" />
-      <p class="mt-3 text-sm text-slate-500">Single schema captures intra‑report structure; sequential schema links findings across time for patient‑level reasoning.</p>
-    </figure>
-
-    <!-- <figure class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
-      <figcaption class="font-semibold mb-4">Figure 4. Model benchmark results</figcaption>
-      <img src="figures/results_benchmark.png" alt="Benchmark results across models in single vs longitudinal settings using LunguageScore" class="rounded-xl shadow-md w-full" />
-      <p class="mt-3 text-sm text-slate-500">LunguageScore differentiates model performance in both single‑report and longitudinal evaluations.</p>
-    </figure> -->
+    <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300 whitespace-pre-line">
+Radiology reports convey detailed clinical observations and capture diagnostic reasoning that evolves over time. However, existing evaluation methods are limited to single-report settings and rely on coarse metrics that fail to capture fine-grained clinical semantics and temporal dependencies. We introduce LUNGUAGE, a benchmark dataset for structured radiology report generation that supports both single-report evaluation and longitudinal patient-level assessment across multiple studies. It contains 1,473 annotated chest X-ray reports, each reviewed by experts, and 80 of them contain longitudinal annotations to capture disease progression and inter-study intervals, also reviewed by experts. Using this benchmark, we develop a two-stage structuring framework that transforms generated reports into fine-grained, schema-aligned structured reports, enabling longitudinal interpretation. We also propose LUNGUAGESCORE, an interpretable metric that compares structured outputs at the entity, relation, and attribute level while modeling temporal consistency across patient timelines. These contributions establish the first benchmark dataset, structuring framework, and evaluation metric for sequential radiology reporting, with empirical results demonstrating that LUNGUAGESCORE effectively supports structured report evaluation. Code: <a href="https://github.com/SuperSupermoon/Lunguage" target="_blank" rel="noopener" class="text-sky-600 hover:underline">https://github.com/SuperSupermoon/Lunguage</a>
+    </p>
   </section>
 
   <!-- Dataset -->
   <section id="dataset" class="max-w-6xl mx-auto px-4 py-10">
-    <h2 class="text-2xl font-bold mb-3">Dataset Summary</h2>
-    <ul class="list-disc pl-5 text-sm space-y-1">
-      <li>1,473 structured chest X‑ray reports from 230 patients</li>
-      <li>17,949 expert‑verified entities and 23,307 relation–attribute pairs</li>
-      <li>80 sequential reports from 10 patients spanning 1–1,200 days</li>
-      <li>Annotated schema and vocabulary curated with radiologist consensus</li>
-    </ul>
+    <h2 class="text-2xl font-bold mb-3">The LUNGUAGE Benchmark Dataset</h2>
+    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-4xl">
+      LUNGUAGE defines a fine‑grained, clinically validated dataset for structured and longitudinal report evaluation. It provides reliable reference annotations that enable both single‑study interpretation and temporal analysis across patient timelines.
+    </p>
+  </section>
+
+  <!-- Schema -->
+  <section id="schema" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold mb-3">Schema</h2>
+    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-4xl">
+      The schema defines entities, relations, and attributes at multiple levels of granularity. It extends beyond single reports by introducing <code>ENTITYGROUP</code> and <code>TEMPORALGROUP</code>, which link identical findings across studies and segment diagnostic episodes, supporting patient‑level clinical reasoning.
+    </p>
+  </section>
+
+  <!-- Annotation -->
+  <section id="annotation" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold mb-3">Annotation Process</h2>
+    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-4xl">
+      The annotation follows a three‑stage workflow: (1) <b>Initial Structuring</b> to design the schema and collect candidate vocabulary, (2) <b>Schema & Vocabulary Curation</b> through blinded expert review and UMLS mapping, and (3) <b>Report‑level Expert Validation</b> ensuring temporal and contextual coherence, including cross‑sentence links (<code>ASSOCIATE</code>, <code>EVIDENCE</code>).
+    </p>
+    <figure class="p-6 my-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+      <figcaption class="font-semibold mb-4">Figure 2. Annotation workflow</figcaption>
+      <img src="figures/workflow.png" alt="Annotation workflow: Stage1 Initial Structuring → Stage2 Schema & Vocabulary → Stage3 Report Annotation" class="rounded-xl shadow-md w-full" />
+      <p class="mt-3 text-sm text-slate-500">Three stages: Initial Structuring → Schema & Vocabulary → Report Annotation.</p>
+    </figure>
+  </section>
+
+  <!-- Structuring Framework -->
+  <section id="framework" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold mb-3">Structuring Framework</h2>
+    <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed max-w-4xl">
+      The structuring framework converts free‑text reports into schema‑aligned triplets and performs longitudinal linking across studies following the LUNGUAGE schema. It produces structured single and sequential representations that support scalable, patient‑level evaluation.
+    </p>
+    <figure class="p-6 my-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+      <figcaption class="font-semibold mb-4">Figure 3. Single and sequential schema</figcaption>
+      <img src="figures/schema_single_sequential.png" alt="Single schema vs sequential schema with ENTITYGROUP and TEMPORALGROUP" class="rounded-xl shadow-md w-full" />
+      <p class="mt-3 text-sm text-slate-500">Single schema captures intra‑report structure; sequential schema links findings across time for patient‑level interpretation.</p>
+    </figure>
   </section>
 
   <!-- Metric -->
   <section id="metric" class="max-w-6xl mx-auto px-4 py-10">
     <h2 class="text-2xl font-bold mb-3">Evaluation Metric: LunguageScore</h2>
-    <p class="text-sm max-w-3xl">A patient‑level evaluation integrating semantic alignment, temporal consistency, and structural fidelity. Designed to correlate with radiologist judgments and generalize across models.</p>
+    <p class="text-sm max-w-3xl text-slate-700 dark:text-slate-300">LunguageScore integrates semantic, structural, and temporal fidelity into a single interpretable metric. It aligns with radiologist judgment and generalizes across report generation models.</p>
     <div class="mt-4 p-4 bg-slate-50 dark:bg-slate-900 rounded-xl">
       <pre class="text-xs overflow-x-auto"><code>MatchScore = Semantic × Temporal × Structural
 
@@ -147,7 +137,7 @@ Structural: Σ_attr w_attr × sim(attr_pred, attr_ref)</code></pre>
   <section id="resources" class="max-w-6xl mx-auto px-4 py-12">
     <h2 class="text-2xl font-bold mb-3">Resources</h2>
     <ul class="list-disc pl-5 text-sm space-y-1">
-      <li><a href="https://github.com/lunguage/lunguage-score" target="_blank" class="text-sky-600 hover:underline">GitHub: LunguageScore</a></li>
+      <li><a href="https://github.com/SuperSupermoon/Lunguage" target="_blank" class="text-sky-600 hover:underline">GitHub: Structuring Framework for LUNGUAGE and LunguageScore</a></li>
       <li><a href="https://arxiv.org/abs/2505.21190" target="_blank" class="text-sky-600 hover:underline">Paper on arXiv (LUNGUAGE: A Benchmark for Structured and Longitudinal Chest X-ray Interpretation)</a></li>
       <li>Dataset release (PhysioNet) — coming soon</li>
       <li>Contact: <a href="mailto:jhak.moon@gmail.com" class="text-sky-600 hover:underline">jhak.moon@gmail.com</a></li>
