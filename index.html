@@ -43,9 +43,9 @@
       </p>
 
       <figure class="p-6 mb-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
-        <figcaption class="font-semibold mb-4 text-center">Figure 1. Overview of the LUNGUAGE framework</figcaption>
+        <figcaption class="font-semibold mb-4 text-left">Figure 1. Overview of the LUNGUAGE framework</figcaption>
         <img src="figures/overview_pipeline.png" alt="Overview pipeline: dataset → structuring framework → longitudinal grouping → LunguageScore evaluation" class="rounded-xl shadow-md w-full" />
-        <p class="mt-3 text-sm text-slate-500 text-center">  <b>Evaluation pipeline for radiology report generation.</b>
+        <p class="mt-3 text-sm text-slate-500 text-left">  <b>Evaluation pipeline for radiology report generation.</b>
           We introduce the first evaluation framework for radiology report generation, enabling both detailed single-report assessment and comprehensive patient-level trajectory evaluation.
           On the left, we release <b>LUNGUAGE</b>, a radiologist-annotated benchmark of structured single and sequential chest X-ray reports.
           On the right, we develop a two-stage <b>structuring framework</b> that converts free-text into schema-aligned structures at both single and sequential levels.
@@ -56,15 +56,15 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm max-w-4xl mx-auto">
         <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
           <div class="font-semibold mb-1 text-sky-700 dark:text-sky-400 text-left">① Benchmark Dataset</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">1,473 single reports (230 patients) annotated with 17,949 entities and 23,307 relation–attribute pairs, plus 80 sequential reports capturing 41,122 longitudinal observations.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug text-left">1,473 single reports (230 patients) annotated with 17,949 entities and 23,307 relation–attribute pairs, plus 80 sequential reports capturing 41,122 longitudinal observations.</p>
         </div>
         <div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
           <div class="font-semibold mb-1 text-emerald-700 dark:text-emerald-400 text-left">② Structuring Framework</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">Transforms free‑text reports into structured entity–relation–attribute triplets, aligning with the LUNGUAGE schema and linking findings across time for patient‑level interpretation.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug text-left">Transforms free‑text reports into structured entity–relation–attribute triplets, aligning with the LUNGUAGE schema and linking findings across time for patient‑level interpretation.</p>
         </div>
         <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-900 shadow ring-1 ring-slate-200 dark:ring-slate-800">
           <div class="font-semibold mb-1 text-amber-700 dark:text-amber-400 text-left">③ LunguageScore Metric</div>
-          <p class="text-slate-600 dark:text-slate-300 leading-snug">Evaluates semantic accuracy, structural fidelity, and temporal coherence between generated and reference reports — a clinically interpretable standard for AI evaluation.</p>
+          <p class="text-slate-600 dark:text-slate-300 leading-snug text-left">Evaluates semantic accuracy, structural fidelity, and temporal coherence between generated and reference reports — a clinically interpretable standard for AI evaluation.</p>
         </div>
       </div>
     </div>
@@ -115,8 +115,8 @@ Radiology reports convey detailed clinical observations and capture diagnostic r
     </p>
     <figure class="p-6 my-8 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
       <figcaption class="font-semibold mb-4">Figure 3. Single and sequential schema</figcaption>
-      <img src="figures/schema_single_sequential.png" alt="Single schema vs sequential schema with ENTITYGROUP and TEMPORALGROUP" class="rounded-xl shadow-md w-full" />
-      <p class="mt-3 text-sm text-slate-500">Single schema captures intra‑report structure; sequential schema links findings across time for patient‑level interpretation.</p>
+      <img src="figures/schema_single_sequential.png" alt="Single schema vs sequential schema" class="rounded-xl shadow-md w-full" />
+      <p class="mt-3 text-sm text-slate-500">Single schema captures intra‑report structure; The figure shows two reports from the same patient at day 10 and day 90. For the single report schema (within each report), gray solid lines connect entities to attributes, while pink and blue solid lines represent inter-entity reasoning relations (ASSOCIATE, EVIDENCE). For the sequential schema (across reports), black solid lines denote entities in the same ENTITYGROUP (same clinical finding over time) and TEMPORALGROUP (same diagnostic episodes), while black dashed lines show entities in the same ENTITYGROUP but different TEMPORALGROUPS (different diagnostic episodes).</p>
     </figure>
   </section>
 
