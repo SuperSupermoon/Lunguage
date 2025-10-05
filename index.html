@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LunguageScore — Medical AI Evaluation</title>
+  <meta name="description" content="A structured and longitudinal benchmark and evaluation framework for chest X-ray report understanding with semantic, structural, and temporal assessment." />
+  <meta property="og:title" content="LunguageScore — Medical AI Evaluation" />
+  <meta property="og:description" content="Clinically grounded evaluation tools and the LUNGUAGE dataset for structured and longitudinal radiology report assessment." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230ea5e9'/><text x='50' y='60' font-size='60' text-anchor='middle' fill='white'>L</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* prefer system color scheme */
+    :root { color-scheme: light dark; }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-sky-50 to-white dark:from-slate-900 dark:to-slate-950 text-slate-800 dark:text-slate-100">
+  <!-- Nav -->
+  <header class="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-200/60 dark:border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="#" class="font-semibold text-lg tracking-tight">Lunguage<span class="text-sky-600">Score</span></a>
+      <nav class="hidden md:flex gap-6 text-sm">
+        <a href="#about" class="hover:text-sky-600">About</a>
+        <a href="#mission" class="hover:text-sky-600">Mission</a>
+        <a href="#whatwedo" class="hover:text-sky-600">What we do</a>
+        <a href="#approach" class="hover:text-sky-600">Approach</a>
+        <a href="#dataset" class="hover:text-sky-600">Dataset</a>
+        <a href="#metric" class="hover:text-sky-600">Metric</a>
+        <a href="#contact" class="hover:text-sky-600">Contact</a>
+      </nav>
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/lunguage/lunguage-score" target="_blank" rel="noopener" class="px-3 py-1.5 rounded-xl bg-sky-600 text-white text-sm shadow hover:bg-sky-500">GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="about" class="max-w-6xl mx-auto px-4 pt-12 pb-8">
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">Clinically grounded evaluation for <span class="text-sky-600">medical AI</span></h1>
+        <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">A structured and longitudinal benchmark of chest X-ray reports and an evaluation framework that measures semantic understanding, structural alignment, and temporal consistency.</p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="#dataset" class="px-4 py-2 rounded-xl bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-sm">Explore dataset</a>
+          <a href="#metric" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">See the metric</a>
+        </div>
+      </div>
+      <div class="relative">
+        <div class="aspect-[4/3] rounded-2xl bg-white/60 dark:bg-slate-800/60 p-6 shadow-xl ring-1 ring-slate-200/70 dark:ring-slate-800">
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="p-4 rounded-xl bg-sky-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">1,473</div>
+              <div class="text-xs opacity-70">Reports</div>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">230</div>
+              <div class="text-xs opacity-70">Patients</div>
+            </div>
+            <div class="p-4 rounded-xl bg-indigo-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">17k+</div>
+              <div class="text-xs opacity-70">Entities</div>
+            </div>
+            <div class="p-4 rounded-xl bg-amber-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">23k+</div>
+              <div class="text-xs opacity-70">Relation–attribute pairs</div>
+            </div>
+            <div class="p-4 rounded-xl bg-rose-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">80</div>
+              <div class="text-xs opacity-70">Sequential reports</div>
+            </div>
+            <div class="p-4 rounded-xl bg-teal-50 dark:bg-slate-900">
+              <div class="text-3xl font-extrabold">41k+</div>
+              <div class="text-xs opacity-70">Pairwise comparisons</div>
+            </div>
+          </div>
+          <p class="mt-4 text-xs text-slate-500 dark:text-slate-400">Numbers reflect the LUNGUAGE test-derived benchmark used by LunguageScore.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission -->
+  <section id="mission" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold">Our Mission</h2>
+    <p class="mt-4 leading-relaxed">LunguageScore advances medical AI evaluation with innovative and clinically relevant assessment. Accurate evaluation of AI-generated medical reports is critical for safe and effective deployment in care settings.</p>
+  </section>
+
+  <!-- What we do -->
+  <section id="whatwedo" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold">What we do</h2>
+    <ul class="mt-4 grid md:grid-cols-2 gap-3 text-slate-700 dark:text-slate-300">
+      <li class="p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/60 dark:bg-slate-800/60">Assess AI-generated medical reports with clinical accuracy</li>
+      <li class="p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/60 dark:bg-slate-800/60">Provide comprehensive metrics for research and development</li>
+      <li class="p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/60 dark:bg-slate-800/60">Support longitudinal analysis for patient-level trajectories</li>
+      <li class="p-4 rounded-xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/60 dark:bg-slate-800/60">Enable reproducible research in medical AI</li>
+    </ul>
+  </section>
+
+  <!-- Approach -->
+  <section id="approach" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold">Our approach</h2>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Semantic understanding</h3>
+        <p class="mt-2 text-sm opacity-80">Transformer-based entity and relation modeling captures clinical meaning and context beyond string matching.</p>
+      </div>
+      <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Multi-modal evaluation</h3>
+        <ul class="mt-2 text-sm opacity-80 list-disc pl-5 space-y-1">
+          <li>Semantic similarity — meaning-based entity matching</li>
+          <li>Temporal consistency — longitudinal change analysis</li>
+          <li>Structural alignment — report organization assessment</li>
+        </ul>
+      </div>
+      <div class="p-6 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Clinical validation</h3>
+        <p class="mt-2 text-sm opacity-80">All components are validated against expert assessments for real-world applicability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Dataset -->
+  <section id="dataset" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold">LUNGUAGE dataset</h2>
+    <p class="mt-4">A radiologist-annotated benchmark of structured chest X-ray reports derived from the MIMIC-CXR test split. It supports both single-report interpretation and longitudinal reasoning.</p>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/70 ring-1 ring-slate-200 dark:ring-slate-800">
+        <h3 class="font-semibold text-sky-700 dark:text-sky-400">Composition</h3>
+        <ul class="mt-2 text-sm list-disc pl-5 space-y-1">
+          <li>1,473 reports from 230 patients</li>
+          <li>17,000+ entities</li>
+          <li>23,000+ relation-attribute pairs across 18 relation types</li>
+        </ul>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/70 ring-1 ring-slate-200 dark:ring-slate-800">
+        <h3 class="font-semibold text-sky-700 dark:text-sky-400">Longitudinal subset</h3>
+        <ul class="mt-2 text-sm list-disc pl-5 space-y-1">
+          <li>80 sequential reports from 10 patients</li>
+          <li>3 to 14 studies per patient</li>
+          <li>Time gaps 1 to 1,200 days</li>
+          <li>41,000+ pairwise comparisons</li>
+        </ul>
+      </div>
+      <div class="p-5 rounded-2xl bg-white/70 dark:bg-slate-800/70 ring-1 ring-slate-200 dark:ring-slate-800">
+        <h3 class="font-semibold text-sky-700 dark:text-sky-400">Schema and vocabulary</h3>
+        <p class="mt-2 text-sm">Schema-aligned vocabulary over diagnostic entities and attributes. All annotations verified by board-certified radiologists.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metric -->
+  <section id="metric" class="max-w-6xl mx-auto px-4 py-10">
+    <h2 class="text-2xl font-bold">LunguageScore metric</h2>
+    <p class="mt-4">A two-stage evaluation that first structures free-text into schema-aligned entities and relations, then computes a joint score that reflects clinical faithfulness.</p>
+    <div class="mt-6 grid md:grid-cols-3 gap-6">
+      <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Semantic score</h3>
+        <p class="mt-2 text-sm opacity-80">Meaning-aware matching between ground truth and prediction at the entity level.</p>
+      </div>
+      <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Structural score</h3>
+        <p class="mt-2 text-sm opacity-80">Alignment of attributes, relations, and report organization.</p>
+      </div>
+      <div class="p-5 rounded-2xl ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+        <h3 class="font-semibold">Temporal score</h3>
+        <p class="mt-2 text-sm opacity-80">Consistency across time with patient-level trajectory analysis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="max-w-6xl mx-auto px-4 py-12">
+    <div class="rounded-2xl p-8 ring-1 ring-slate-200 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/70">
+      <h2 class="text-2xl font-bold">Get in touch</h2>
+      <p class="mt-3">Questions or collaboration ideas are welcome.</p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a href="mailto:jhak.moon@gmail.com" class="px-4 py-2 rounded-xl bg-sky-600 text-white text-sm shadow hover:bg-sky-500">Email</a>
+        <a href="https://github.com/lunguage/lunguage-score" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-sm">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-10 text-center text-xs text-slate-500 dark:text-slate-400">
+    <p>© <span id="year"></span> LunguageScore. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
