@@ -1,0 +1,80 @@
+{
+  "name": "entities_schema",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "entities": {
+        "type": "array",
+        "description": "All extracted entities with their relations",
+        "items": {
+          "type": "object",
+          "description": "Represents a single entity with all its extracted relations",
+          "properties": {
+            "name": {
+              "type": "string",
+              "description": "The name of the entity, exactly as provided"
+            },
+            "sent_idx": {
+              "type": "integer",
+              "description": "Index of the sentence from which this entity was extracted"
+            },
+            "ent_idx": {
+              "type": "integer",
+              "description": "Unique identifier for this entity within the report section"
+            },
+            "relations": {
+              "type": "array",
+              "description": "List of all relations for this entity",
+              "items": {
+                "type": "object",
+                "description": "Represents a single relation of an entity with its value",
+                "properties": {
+                  "relation": {
+                    "type": "string",
+                    "description": "The relation name among the predefined types (e.g., Cat, Dx_Status, Dx_Certainty, etc.)",
+                    "enum": [
+                      "Cat",
+                      "Dx_Status",
+                      "Dx_Certainty",
+                      "Location",
+                      "Associate",
+                      "Evidence",
+                      "Morphology",
+                      "Distribution",
+                      "Measurement",
+                      "Severity",
+                      "Comparison",
+                      "Onset",
+                      "No Change",
+                      "Improved",
+                      "Worsened",
+                      "Placement",
+                      "Past Hx",
+                      "Other Source",
+                      "Assessment Limitations"
+                    ]
+                  },
+                  "value": {
+                    "type": "string",
+                    "description": "The value corresponding to the relation"
+                  },
+                  "obj_ent_idx": {
+                    "type": ["integer", "null"],
+                    "description": "For Associate/Evidence relations, the ent_idx of the object entity (null otherwise)"
+                  }
+                },
+                "required": ["relation", "value", "obj_ent_idx"],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": ["name", "sent_idx", "ent_idx", "relations"],
+          "additionalProperties": false
+        }
+      }
+    },
+    "required": ["entities"],
+    "additionalProperties": false
+  },
+  "strict": true
+}

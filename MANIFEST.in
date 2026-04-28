@@ -1,0 +1,11 @@
+include README.md
+include requirements.txt
+include LICENSE
+include lunguage_score/*.yaml
+include lunguage_score/*.json
+include lunguage_score/*.csv
+recursive-include lunguage_score *
+prune examples
+prune tests
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]

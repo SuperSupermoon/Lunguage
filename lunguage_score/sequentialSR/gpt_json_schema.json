@@ -1,0 +1,103 @@
+{
+  "name": "RadiologyOutput",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "properties": {
+      "results": {
+        "type": "array",
+        "description": "List of finding groups including episodes and findings",
+        "items": {
+          "$ref": "#/$defs/FindingGroup"
+        }
+      }
+    },
+    "required": [
+      "results"
+    ],
+    "additionalProperties": false,
+    "$defs": {
+      "Episode": {
+        "type": "object",
+        "title": "Episode",
+        "properties": {
+          "episode": {
+            "type": "integer",
+            "description": "Sequential episode number"
+          },
+          "days": {
+            "type": "array",
+            "description": "Array of day numbers that belong to this episode",
+            "items": {
+              "type": "integer"
+            }
+          }
+        },
+        "required": [
+          "episode",
+          "days"
+        ],
+        "additionalProperties": false
+      },
+      "Finding": {
+        "type": "object",
+        "title": "Finding",
+        "properties": {
+          "IDX": {
+            "type": "integer",
+            "description": "The index number of the finding from the input"
+          },
+          "DAY": {
+            "type": "integer",
+            "description": "The day number when the finding was observed"
+          },
+          "finding": {
+            "type": "string",
+            "description": "The description of the finding"
+          }
+        },
+        "required": [
+          "IDX",
+          "DAY",
+          "finding"
+        ],
+        "additionalProperties": false
+      },
+      "FindingGroup": {
+        "type": "object",
+        "title": "FindingGroup",
+        "properties": {
+          "group_name": {
+            "type": "string",
+            "description": "Name of the finding group"
+          },
+          "findings": {
+            "type": "array",
+            "description": "List of all findings in this group",
+            "items": {
+              "$ref": "#/$defs/Finding"
+            }
+          },
+          "episodes": {
+            "type": "array",
+            "description": "Temporal groupings of these findings",
+            "items": {
+              "$ref": "#/$defs/Episode"
+            }
+          },
+          "rationale": {
+            "type": "string",
+            "description": "Explanation for the grouping decisions"
+          }
+        },
+        "required": [
+          "group_name",
+          "findings",
+          "episodes",
+          "rationale"
+        ],
+        "additionalProperties": false
+      }
+    }
+  }
+}

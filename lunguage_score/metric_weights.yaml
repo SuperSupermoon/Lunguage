@@ -1,0 +1,22 @@
+TEMPORAL_WEIGHTS:
+  sequence: 0.5
+  episode: 0.5
+
+REL_WEIGHTS:
+  dx_status: 0.5
+  dx_certainty: 0.1
+  location: 0.2
+  severity: 0.15
+  onset: 0.15
+  improved: 0.15 
+  worsened: 0.15  
+  placement: 0.15
+  no change: 0.1
+  morphology: 0.05
+  distribution: 0.05
+  measurement: 0.05
+  comparison: 0.03
+  past hx: 0.01
+  other source: 0.01
+  assessment limitations: 0.01
+
