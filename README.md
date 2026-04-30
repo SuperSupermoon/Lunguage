@@ -79,12 +79,6 @@ Place the dataset files in your workspace:
 pip install lunguage-score
 ```
 
-For SOTA comparison metrics (BLEU, BERTScore, RaTEScore):
-
-```bash
-pip install "lunguage-score[sota]"
-```
-
 <details>
 <summary>Install from source (development)</summary>
 
