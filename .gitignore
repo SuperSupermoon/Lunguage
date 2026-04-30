@@ -65,3 +65,7 @@ Thumbs.db
 *.bin
 *.pt
 *.ckpt
+
+# Homepage files - managed in gh-pages branch
+index.html
+figures/
