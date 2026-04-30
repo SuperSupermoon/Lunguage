@@ -5,17 +5,18 @@
   <a href="https://arxiv.org/abs/2505.21190" target="_blank">
     <img alt="Lunguage" src="https://img.shields.io/badge/📄_Lunguage-Paper-b31b1b.svg" />
   </a>
-  <a href="https://arxiv.org/abs/2511.04506" target="_blank">
-    <img alt="Lunguage++" src="https://img.shields.io/badge/📄_Lunguage%2B%2B-Paper-b31b1b.svg" />
-  </a>
   <a href="https://pypi.org/project/lunguage-score/" target="_blank">
     <img alt="PyPI" src="https://img.shields.io/pypi/v/lunguage-score?label=PyPI&color=orange" />
   </a>
   <a href="https://physionet.org/content/lunguage" target="_blank">
-    <img alt="Lunguage Data Resource" src="https://img.shields.io/badge/💾_Lunguage-Data_Resource-blueviolet.svg" />
+    <img alt="PhysioNet Dataset" src="https://img.shields.io/badge/💾_PhysioNet-Dataset-blueviolet.svg" />
   </a>
   <a href="https://huggingface.co/datasets/SuperSupermoon/Lunguage" target="_blank">
     <img alt="HuggingFace Dataset" src="https://img.shields.io/badge/🤗_HuggingFace-Dataset-yellow.svg" />
+  </a>
+  &nbsp;|&nbsp;
+  <a href="https://arxiv.org/abs/2511.04506" target="_blank">
+    <img alt="Lunguage++" src="https://img.shields.io/badge/📄_Lunguage%2B%2B-Paper-b31b1b.svg" />
   </a>
 </div>
 
