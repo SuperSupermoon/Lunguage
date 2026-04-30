@@ -9,7 +9,7 @@
     <img alt="Lunguage++" src="https://img.shields.io/badge/📄_Lunguage%2B%2B-Paper-b31b1b.svg" />
   </a>
   <a href="https://pypi.org/project/lunguage-score/" target="_blank">
-    <img alt="PyPI" src="https://img.shields.io/badge/📦_PyPI-lunguage--score-orange.svg" />
+    <img alt="PyPI" src="https://img.shields.io/pypi/v/lunguage-score?label=PyPI&color=orange" />
   </a>
   <a href="https://physionet.org/content/lunguage" target="_blank">
     <img alt="Lunguage Data Resource" src="https://img.shields.io/badge/💾_Lunguage-Data_Resource-blueviolet.svg" />
@@ -27,10 +27,11 @@
 </p>
 
 ## 📰 News
-- [2024/05] Lunguage benchmark paper posted on arXiv.
-- [2024/11] Lunguage++ extended version released: [paper](https://arxiv.org/abs/2511.04506), [code](https://github.com/prabaey/lunguage_uncertainty).
-- [2024/11] Lunguage dataset (v1.0.0) released on PhysioNet.
-- [2025/04] Lunguage dataset (v1.1.0) and Lunguage++ (v1.0.0) datasets are under review and will be made available on PhysioNet.
+- [2026/04] `lunguage-score` v1.0.0 released on [PyPI](https://pypi.org/project/lunguage-score/) — `pip install lunguage-score` now available.
+- [2026/03] Lunguage dataset (v1.1.0) and Lunguage++ (v1.0.0) datasets are under review and will be made available on PhysioNet.
+- [2025/11] Lunguage++ extended version released: [paper](https://arxiv.org/abs/2511.04506), [code](https://github.com/prabaey/lunguage_uncertainty).
+- [2025/11] Lunguage dataset (v1.0.0) released on PhysioNet.
+- [2025/05] Lunguage benchmark paper posted on arXiv.
 
 ## 📚 Introduction
 
@@ -74,7 +75,18 @@ Place the dataset files in your workspace:
 
 ## Installation
 
-> Package publication is in progress. For now, use source installation.
+```bash
+pip install lunguage-score
+```
+
+For SOTA comparison metrics (BLEU, BERTScore, RaTEScore):
+
+```bash
+pip install "lunguage-score[sota]"
+```
+
+<details>
+<summary>Install from source (development)</summary>
 
 ```bash
 git clone https://github.com/supersupermoon/Lunguage.git
@@ -82,7 +94,7 @@ cd Lunguage/lunguage_score_package
 pip install -e .
 ```
 
-When PyPI publication is complete, `pip install lunguage-score` will be supported as the default installation path.
+</details>
 
 > **Metric stage** works immediately after install — no LLM needed.
 > **Structuring stage** requires an LLM API key or a running vLLM server.
@@ -93,8 +105,6 @@ When PyPI publication is complete, `pip install lunguage-score` will be supporte
 ## Quick Start: `run_eval_pipeline.py`
 
 `run_eval_pipeline.py` is the recommended way to run the full pipeline from the command line.
-
-> **Current recommendation (pre-release):** run directly from this repository after source installation.
 
 ### `--mode` — input report source
 
@@ -312,40 +322,6 @@ print(f"Recall:          {results['avg_recall']:.4f}")
 
 </details>
 
----
-
-<details>
-<summary><b>SOTA Metrics (GREEN, RadGraph, BLEU, BERTScore, FineRadScore)</b></summary>
-
-```python
-from lunguage_score.metric.run_all_metrics import run_metrics
-
-run_metrics(
-    input_path='./results/paired_reports.csv',
-    output_path='./results/sota_scores.csv',
-    metrics=['green', 'radgraph', 'bleu', 'bertscore'],
-    output_dir='./results/metric_artifacts',
-)
-```
-
-Input CSV format:
-```csv
-study_id,report_ref,report_cand
-s10000032,"The chest X-ray shows...","The radiograph demonstrates..."
-```
-
-> **Optional feature:** `pip install "lunguage-score[sota]"` for RaTEScore, BLEU, BERTScore.
-> Some environments may still require additional dependency/version adjustments.
-
-| Metric | Notes |
-|--------|-------|
-| GREEN | Install separately: `pip install git+https://github.com/Stanford-AIMI/GREEN.git` |
-| RadGraph F1 | Included by default |
-| BLEU / BERTScore | Install with `pip install "lunguage-score[sota]"` |
-| RaTEScore | Install with `pip install "lunguage-score[sota]"`; may be unavailable on some numpy versions |
-| FineRadScore | Requires OpenAI API key |
-
-</details>
 
 ---
 
