@@ -14,6 +14,9 @@
   <a href="https://physionet.org/content/lunguage" target="_blank">
     <img alt="Lunguage Data Resource" src="https://img.shields.io/badge/💾_Lunguage-Data_Resource-blueviolet.svg" />
   </a>
+  <a href="https://huggingface.co/datasets/SuperSupermoon/Lunguage" target="_blank">
+    <img alt="HuggingFace Dataset" src="https://img.shields.io/badge/🤗_HuggingFace-Dataset-yellow.svg" />
+  </a>
 </div>
 
 <h1>
@@ -50,7 +53,8 @@ Structuring supports **Single SR** (single-visit) and **Sequential SR** (multi-v
 
 The Lunguage dataset (v1.0.0) is hosted on [PhysioNet](https://physionet.org/content/lunguage/1.0.0/) and is available to **credentialed MIMIC-CXR users** under the PhysioNet Data Use Agreement.
 
-> **Access:** https://physionet.org/content/lunguage/1.0.0/ (requires PhysioNet credentialed account with MIMIC-CXR access)
+> **PhysioNet:** https://physionet.org/content/lunguage/1.0.0/ (requires credentialed MIMIC-CXR access)
+> **HuggingFace:** https://huggingface.co/datasets/SuperSupermoon/Lunguage (gated — same access requirements)
 
 Place the dataset files in your workspace:
 
